@@ -17,12 +17,12 @@ public final class AnnotationFinder {
 
     public static Set<Class<?>> getClassesWithAnnotation(
             String packageName,
-            Class<? extends Annotation> annotation){
+            Class<? extends Annotation> annotation) {
         Reflections reflections = new Reflections(packageName);
 
         Set<Class<?>> classesAnnotatedWith = reflections.getTypesAnnotatedWith(annotation);
 
-        if (classesAnnotatedWith.size() == 0){
+        if (classesAnnotatedWith.size() == 0) {
             logger.warn("Zero classes with annotation found. Is package " +
                     packageName + "exist?");
         }
@@ -32,7 +32,7 @@ public final class AnnotationFinder {
 
     public static Set<Field> getFieldsAnnotatedWith(
             Class<?> clazz,
-            Class<? extends Annotation> annotation){
+            Class<? extends Annotation> annotation) {
 
         return Arrays.stream(clazz.getDeclaredFields())
                 .filter(f -> f.isAnnotationPresent(annotation))
@@ -41,7 +41,7 @@ public final class AnnotationFinder {
 
     public static Set<Method> getMethodsAnnotatedWith(
             Class<?> clazz,
-            Class<? extends Annotation> annotation){
+            Class<? extends Annotation> annotation) {
         return Arrays.stream(clazz.getDeclaredMethods())
                 .filter(f -> f.isAnnotationPresent(annotation))
                 .collect(Collectors.toSet());

@@ -10,7 +10,7 @@ public class ConfigurationMap {
         this.map.putAll(map);
     }
 
-    public String getValueById(String id){
+    public String getValueById(String id) {
         return map.get(id);
     }
 }

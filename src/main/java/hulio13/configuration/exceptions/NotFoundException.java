@@ -1,6 +1,6 @@
 package hulio13.configuration.exceptions;
 
-public class NotFoundException extends RuntimeException{
+public class NotFoundException extends RuntimeException {
     public NotFoundException() {
     }
 

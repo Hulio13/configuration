@@ -9,5 +9,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Configuration {
     int order() default 0;
+
     String defaultPath() default "";
 }

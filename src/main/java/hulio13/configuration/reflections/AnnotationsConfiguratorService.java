@@ -72,7 +72,7 @@ public class AnnotationsConfiguratorService {
     }
 
     private static void initializeValueAnnotatedFieldsAndMethods(
-            Object instance, ConfigurationMap map, String initialPath){
+            Object instance, ConfigurationMap map, String initialPath) {
         Class<?> clazz = instance.getClass();
 
         Set<Field> fields =
@@ -93,7 +93,7 @@ public class AnnotationsConfiguratorService {
             StringValueInjector.injectInField(field, valueById, instance);
         }
 
-        for (Method method : methods){
+        for (Method method : methods) {
             Value annotation = method.getAnnotation(Value.class);
             String fullPath = concatenateWithDefaultPath(
                     initialPath,
@@ -111,11 +111,11 @@ public class AnnotationsConfiguratorService {
         }
     }
 
-    private static void callConfigureMethod(Class<?> clazz, Object instance){
+    private static void callConfigureMethod(Class<?> clazz, Object instance) {
         Set<Method> methods = AnnotationFinder.getMethodsAnnotatedWith(
                 clazz, ConfigureMethod.class);
 
-        if (methods.size() > 1){
+        if (methods.size() > 1) {
             String message = "Configurator should have one configure method. " +
                     "Class with more than two methods is: " + clazz.getName();
 
@@ -137,8 +137,8 @@ public class AnnotationsConfiguratorService {
                 method.setAccessible(true);
                 method.invoke(instance);
                 method.setAccessible(false);
-            } catch (NoSuchMethodException ignored) { }
-            catch (Exception e){
+            } catch (NoSuchMethodException ignored) {
+            } catch (Exception e) {
                 throw new RuntimeException(e);
             }
         }
@@ -146,14 +146,14 @@ public class AnnotationsConfiguratorService {
 
     private static void throwExceptionIfValueIsEmpty(
             String fullPath, String valueById) {
-        if (valueById == null){
+        if (valueById == null) {
             throw new NotFoundException("'" + fullPath + "' property" +
                     "not found in configuration.");
         }
     }
 
     private static String concatenateWithDefaultPath(
-            String defaultPath, String path){
+            String defaultPath, String path) {
         if (defaultPath.equals("")) return path;
         return defaultPath + "." + path;
     }

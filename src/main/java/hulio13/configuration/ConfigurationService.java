@@ -25,7 +25,7 @@ public final class ConfigurationService {
                 getConfiguredConfigurators(configPackage, map));
     }
 
-    private static void addConfigurators(Object[] objects){
+    private static void addConfigurators(Object[] objects) {
         for (var obj : objects) {
             var clazz = obj.getClass();
             ConfiguratorRegistry.register(clazz, clazz.cast(obj));

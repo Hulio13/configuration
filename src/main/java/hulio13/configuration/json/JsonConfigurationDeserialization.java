@@ -1,6 +1,5 @@
 package hulio13.configuration.json;
 
-import com.fasterxml.jackson.core.JacksonException;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -71,7 +70,7 @@ public final class JsonConfigurationDeserialization extends StdDeserializer<Conf
                     "\" key not found in json");
             return true;
         }
-        if (jsonNode.isEmpty()){
+        if (jsonNode.isEmpty()) {
             logger.warn("\"" + keyNameOfNode +
                     "\" key has no value in json");
             return true;

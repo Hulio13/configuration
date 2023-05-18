@@ -17,7 +17,7 @@ public final class JsonConfigurationFileReader {
     private static final Logger logger = LoggerFactory.getLogger(JsonConfigurationFileReader.class);
 
     static public ConfigurationMap readConfigurationFile(String configName) throws IOException {
-        try{
+        try {
             File[] files = ResourceFilesProvider.getResourceFolderFiles("");
 
             for (File file : files) {
@@ -33,7 +33,7 @@ public final class JsonConfigurationFileReader {
             logger.error("Configuration file '" + CONFIGURATION_FILE_NAME +
                     "' not found in root of resource folder");
             throw new FileNotFoundException("Configuration file not found");
-        } catch (IOException e){
+        } catch (IOException e) {
             logger.error("Config file is not found or incorrect");
             throw new IOException(e);
         }
